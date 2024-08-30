@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff8e1; /* Soft yellow background */
+        }
+        h1 {
+            color: #343a40; /* Dark grey color */
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #ffffff; /* White background for form */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #495057; /* Darker grey for labels */
+        }
+        input {
+            margin-top: 5px;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 15px;
+            padding: 12px;
+            border: none;
+            background-color: #fbc02d; /* Bright yellow for buttons */
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #f9a825; /* Slightly darker yellow on hover */
+        }
+        p {
+            margin-top: 15px;
+            text-align: center;
+        }
+        a {
+            color: #007bff; /* Bright blue color for links */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register</h1>
+    <form id="registerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:5000/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+
+                if (response.ok) {
+                    window.location.href = 'login.html'; // Redirect to login page
+                } else {
+                    const data = await response.json();
+                    alert(data.message || 'Registration failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error registering:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>

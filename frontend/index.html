@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <div>
+            <input type="text" id="searchBar" placeholder="Search tasks..." />
+            <button id="searchButton">Search</button>
+            <button id="logoutButton">Logout</button>
+        </div>
+        <button id="openAddTaskModal">Add Task</button>
+        <button id="showAllTasksButton">Show All Tasks</button>
+        <!-- Single task list container -->
+        <div id="taskList" class="task-list-container"></div>
+    </div>
+
+    <!-- Modal for Adding Tasks -->
+    <div id="addTaskModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeAddTaskModal">&times;</span>
+            <h2>Add New Task</h2>
+            <form id="taskForm">
+                <label for="task">Task Title:</label>
+                <input type="text" id="task" placeholder="Task Title" required>
+                <label for="description">Description:</label>
+                <textarea id="description" placeholder="Description" required></textarea>
+                <label for="status">Status:</label>
+                <select id="status" required>
+                    <option value="" disabled selected>Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Editing Tasks -->
+    <div id="editTaskModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeEditTaskModal">&times;</span>
+            <h2>Edit Task</h2>
+            <form id="editTaskForm">
+                <input type="hidden" id="editTaskId">
+                <label for="editTask">Task Title:</label>
+                <input type="text" id="editTask" placeholder="Task Title" required>
+                <label for="editDescription">Description:</label>
+                <textarea id="editDescription" placeholder="Description" required></textarea>
+                <label for="editStatus">Status:</label>
+                <select id="editStatus" required>
+                    <option value="" disabled selected>Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <button type="submit">Update Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

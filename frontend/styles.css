@@ -1,0 +1,122 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff8e1; /* Soft yellow background for the whole page */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    background: #ffffff; /* White background for the container */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    max-height: 80vh;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #343a40; /* Dark grey color for text */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 12px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensure padding is included in width/height */
+}
+
+input:focus, select:focus, button:focus {
+    border-color: #80bdff;
+    outline: none;
+}
+
+button {
+    background-color: #fbc02d; /* Bright yellow for buttons */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #f9a825; /* Slightly darker yellow on hover */
+}
+
+.task-list-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 20px; /* Add some space above task list */
+}
+
+.task-item {
+    border-bottom: 1px solid #dee2e6;
+    padding: 15px 0;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-actions {
+    margin-top: 10px;
+}
+
+.task-actions button {
+    margin-right: 8px; /* Space between action buttons */
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2; /* Ensure modal is above other elements */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 90%;
+    max-width: 500px; /* Limit width of modal */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
